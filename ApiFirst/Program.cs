@@ -10,6 +10,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var cors = "AllowAll";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(cors,
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                      });
+});
+
+
 builder.Services.AddDbContext<CarDbContext>(options => 
         options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDb")));
 
@@ -24,9 +37,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(cors);
 
 app.MapControllers();
 

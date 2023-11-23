@@ -85,6 +85,7 @@
             Controls.Add(picture);
             Name = "UserControl1";
             Size = new Size(800, 183);
+            Load += UserControl1_Load;
             DoubleClick += UserControl1_DoubleClick;
             ((System.ComponentModel.ISupportInitialize)picture).EndInit();
             ResumeLayout(false);

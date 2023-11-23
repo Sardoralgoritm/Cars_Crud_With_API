@@ -3,7 +3,7 @@
 public partial class UserControl1 : UserControl
 {
     private int id;
-    Car car {  get; set; }
+    Car car { get; set; }
     public UserControl1(int Id,
                         string Brand,
                         string Name,
@@ -17,7 +17,7 @@ public partial class UserControl1 : UserControl
         picture.ImageLocation = Imageurl;
         id = Id;
 
-        car = new ()
+        car = new()
         {
             Id = Id,
             Brand = Brand,
@@ -38,5 +38,10 @@ public partial class UserControl1 : UserControl
                         car.Price);
 
         edit.ShowDialog();
+    }
+
+    private void UserControl1_Load(object sender, EventArgs e)
+    {
+
     }
 }
