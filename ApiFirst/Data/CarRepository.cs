@@ -36,9 +36,25 @@ public class CarRepository : ICarInterface
     public async Task<Car> GetByIdAsync(int id)
         => await _carDbContext.Cars.FirstOrDefaultAsync(i => i.Id == id);
 
+    public async Task<List<Car>> GetPagesCarsAsync(int pageNumber)
+    {
+        var cars = await _carDbContext.Cars.ToListAsync();
+        int ind = pageNumber * 5 - 5;
+        int len = cars.Count();
+        int limit = 5;
+        List<Car> list = new List<Car>();
+        for (int i = ind; i < len && limit > 0; limit--, i++)
+        {
+            list.Add(cars[i]);
+        }
+        return list;
+
+    }
+
     public void Update(Car car)
     {
         _carDbContext.Cars.Update(car);
         _carDbContext.SaveChanges();
     }
+
 }

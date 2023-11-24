@@ -63,4 +63,16 @@ public class CarsController : ControllerBase
         return Ok(cars);
     }
 
+    [HttpGet("GetPaged")]
+    public async Task<IActionResult> GetPagedAsync(int numberPage = 1)
+    {
+        var cars = await _carInterface.GetPagesCarsAsync(numberPage);
+        if (cars.Count() < 1)
+        {
+            return NotFound();
+        }
+
+        return Ok(cars);
+    }
+
 }

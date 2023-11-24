@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            paged = new ComboBox();
             AddBtn = new Button();
             RefreshBtn = new Button();
             body = new FlowLayoutPanel();
@@ -38,6 +39,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Orange;
+            panel1.Controls.Add(paged);
             panel1.Controls.Add(AddBtn);
             panel1.Controls.Add(RefreshBtn);
             panel1.Dock = DockStyle.Bottom;
@@ -46,10 +48,19 @@
             panel1.Size = new Size(800, 95);
             panel1.TabIndex = 0;
             // 
+            // paged
+            // 
+            paged.FormattingEnabled = true;
+            paged.Location = new Point(574, 34);
+            paged.Name = "paged";
+            paged.Size = new Size(169, 29);
+            paged.TabIndex = 2;
+            paged.TextChanged += paged_TextChanged;
+            // 
             // AddBtn
             // 
             AddBtn.Anchor = AnchorStyles.None;
-            AddBtn.Location = new Point(462, 23);
+            AddBtn.Location = new Point(334, 23);
             AddBtn.Name = "AddBtn";
             AddBtn.Size = new Size(134, 49);
             AddBtn.TabIndex = 1;
@@ -60,7 +71,7 @@
             // RefreshBtn
             // 
             RefreshBtn.Anchor = AnchorStyles.None;
-            RefreshBtn.Location = new Point(181, 23);
+            RefreshBtn.Location = new Point(95, 23);
             RefreshBtn.Name = "RefreshBtn";
             RefreshBtn.Size = new Size(134, 49);
             RefreshBtn.TabIndex = 0;
@@ -87,6 +98,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -97,5 +109,6 @@
         private Button AddBtn;
         private Button RefreshBtn;
         private FlowLayoutPanel body;
+        private ComboBox paged;
     }
 }
